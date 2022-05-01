@@ -1,0 +1,40 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: actuator-app
+  redis:
+    lettuce:
+      pool:
+        enabled: true
+        max-active: 10
+        min-idle: 3
+        max-wait: 5
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: "Actuator"
+    enable:
+      "lettuce.command.completion": false
+      "lettuce.command.completion.percentile": false
+      "lettuce.command.firstresponse": false
+      "lettuce.command.firstresponse.percentile": false
+
+
+
+
